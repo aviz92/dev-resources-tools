@@ -7,5 +7,7 @@
 >  
 > DuckDNS is easy to set up and can be integrated into scripts or run on devices like Raspberry Pi to maintain a consistent domain name. 
 > It supports several update methods, including API calls, cron jobs, and built-in integrations with platforms like Linux, Windows, and macOS.
+> 
+> **Link to youtube:** https://www.youtube.com/watch?v=mu02Ute0VTI
 
 ---
