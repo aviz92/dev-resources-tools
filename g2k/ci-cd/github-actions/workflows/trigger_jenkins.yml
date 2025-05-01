@@ -1,0 +1,29 @@
+# This workflow triggers a Jenkins pipeline when a pull request is merged into the main branch.
+# It listens for the closed event and checks if the PR was merged before initiating the process. The workflow currently includes a placeholder for triggering the Jenkins build via an API call.
+
+
+name: Trigger Jenkins on PR Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  trigger_jenkins:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      # - name: Trigger Jenkins Pipeline
+      #   run: |
+      #     curl -X POST https://<Jenkins_API> \
+      #     -H "Authorization: Bearer ${{ secrets.Jenkins_API_TOKEN }}" \
+      #     -H "Content-Type: application/json" \
+      #     -d '{
+      #           "commit": "HEAD",
+      #           "branch": "${{ github.event.pull_request.base.ref }}",
+      #           "message": "Build triggered by PR #${{ github.event.pull_request.number }} merge"
+      #         }'
+
+      - name: Run tests
+        run: |
+          ls -l

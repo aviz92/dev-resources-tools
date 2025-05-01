@@ -1,0 +1,42 @@
+# This workflow automatically deploys static HTML and CSS files to GitHub Pages whenever changes are pushed to the `main` branch.
+# It checks out the repository, displays the files, and then deploys them to GitHub Pages.
+
+# https://www.freecodecamp.org/news/automate-cicd-with-github-actions-streamline-workflow/
+
+
+name: Deploy Static HTML and CSS to GitHub Pages
+
+# Trigger the workflow on push to the main branch
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs: # Define what operating system the job should run on
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - # Step 1: Update the operating system
+      - name: Update operating system
+        run: |
+              sudo apt-get update
+
+      # Step 2: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 3: Check the files that have been checked out
+      - name: Display files
+        run: ls
+
+      # Step 4: Deploy to GitHub Pages
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./ # The HTML and CSS files lie in the root directory, hence that should be the publish directory

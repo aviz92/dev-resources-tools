@@ -1,0 +1,15 @@
+PyYAML
+colorlog
+coverage
+mutmut
+pytest
+pytest-cov
+pytz
+tqdm
+boto3
+botocore
+requests
+paramiko
+retrying
+scp
+pyfiglet

@@ -1,0 +1,57 @@
+# This workflow automatically deploys a static HTML preview for a pull request to GitHub Pages and comments the link on the PR.
+# It checks for the existence of index.html, creates one if necessary, deploys the preview, and posts the deployment link as a comment on the PR.
+
+
+name: Deploy Static HTML and CSS to GitHub Pages for PR and Comment the Link
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - # Step 1: Update the operating system
+      - name: Update operating system
+        run: |
+              sudo apt-get update
+
+      # Step 2: Checkout the repository
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 3: Verify index.html exists
+      - name: Check for index.html
+        id: check_index
+        run: |
+          if [ -f "index.html" ]; then
+            echo "index.html found"
+          else
+            echo "index.html not found, creating simple index file"
+            echo "<html><head><title>PR Preview</title></head><body><h1>PR #${{ github.event.pull_request.number }} Preview</h1><p>This is a preview of PR #${{ github.event.pull_request.number }}</p></body></html>" > index.html
+          fi
+
+      # Step 4: Deploy PR to GitHub Pages
+      - name: Deploy PR to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          destination_dir: pr-preview-${{ github.event.pull_request.number }}
+
+      # Step 5: Comment PR with link to deployed site
+      - name: Comment PR with link to deployed site
+        uses: peter-evans/create-or-update-comment@v1
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            PR preview deployed! 🚀
+            
+            You can view it at: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/pr-preview-${{ github.event.pull_request.number }}/
+            
+            ⚠️ Note: If you see a 404 error, please wait a few minutes for GitHub Pages to finish deploying.

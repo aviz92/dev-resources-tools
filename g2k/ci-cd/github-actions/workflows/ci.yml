@@ -1,0 +1,77 @@
+# This workflow sets up a Continuous Integration (CI) pipeline that runs tests for a Django application on every pull request to the main branch.
+# It sets up a PostgreSQL service, installs dependencies, and runs tests with the configured environment variables for the Django application.
+
+
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: automation_db
+
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_DB: ci_db
+          POSTGRES_USER: ci_user
+          POSTGRES_PASSWORD: ci_password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Update operating system
+        run: |
+              sudo apt-get update
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11.5'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify installed packages
+        run: |
+          pip list
+
+      - name: Install xmlsec1
+        run: |
+              sudo apt-get install -y xmlsec1
+          
+
+      - name: Run tests
+        env:
+          DJANGO_SETTINGS_MODULE: 'core.settings'
+          SECRET_DJANGO_KEY: secrets.SECRET_DJANGO_KEY
+          DB_NAME: 'ci_db'
+          DB_USER: 'ci_user'
+          DB_PASSWORD: 'ci_password'
+          DB_HOST: 'localhost'
+          DB_PORT: '5432'
+          DJANGO_SETTINGS_TYPE: 'local'
+          DJANGO_DEBUG: True
+          DJANGO_ALLOWED_HOSTS: '["localhost", "127.0.0.1"]'
+
+        run: |
+          ls -l
+          python manage.py test --verbosity 2
