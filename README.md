@@ -5,6 +5,8 @@ This repository is a curated toolkit of development utilities, CI/CD workflows, 
 
 Whether you're implementing architectural patterns, configuring GitHub Actions, or setting up utility infrastructure — this project has something for you.
 
+Link to [project_structure.txt](project_structure.txt)
+
 ---
 
 🤝 Contributing
