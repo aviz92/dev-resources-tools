@@ -1,17 +1,6 @@
 .
-├── .DS_Store
 ├── .dockerignore
 ├── .gitignore
-├── .idea
-│     ├── .gitignore
-│     ├── vcs.xml
-│     └── workspace.xml
-├── .venv
-│     ├── .gitignore
-│     ├── CACHEDIR.TAG
-│     ├── bin
-│     ├── lib
-│     └── pyvenv.cfg
 ├── README.md
 ├── _virtualenv_handler.py
 ├── clean__pycache__.py
