@@ -1,0 +1,35 @@
+.
+├── .DS_Store
+├── .dockerignore
+├── .gitignore
+├── .idea
+│     ├── .gitignore
+│     ├── vcs.xml
+│     └── workspace.xml
+├── .venv
+│     ├── .gitignore
+│     ├── CACHEDIR.TAG
+│     ├── bin
+│     ├── lib
+│     └── pyvenv.cfg
+├── README.md
+├── _virtualenv_handler.py
+├── clean__pycache__.py
+├── g2k
+│     ├── __init__.py
+│     ├── ci-cd
+│     ├── python_patterns
+│     └── web
+├── infrastructure
+│     ├── .DS_Store
+│     ├── __init__.py
+│     ├── consts
+│     ├── decorators
+│     ├── instance_manager.py
+│     ├── logger_infrastructure
+│     └── utils
+├── logo_my_name.py
+├── project_structure.txt
+└── requirements.txt
+
+14 directories, 19 files
