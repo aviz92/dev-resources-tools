@@ -22,5 +22,5 @@ brew install tree
 
 execute the command in the terminal of the project folder:
 ```bash
-tree > project_structure.txt -L 2 -a
+tree > project_structure.txt -L 5 -a -I '__pycache__|.venv|.git|.idea|.DS_Store'
 ```
