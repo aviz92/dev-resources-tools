@@ -1,5 +1,5 @@
 # Dev Tools and Extensions Repository
-Welcome to the **Dev Tools and Extensions Repository**! 
+👋 Welcome to the **Dev Tools and Extensions Repository**! 
 
 This repository is a curated toolkit of development utilities, CI/CD workflows, design patterns, and productivity enhancements aimed at helping developers build smarter, faster, and cleaner systems.
 
