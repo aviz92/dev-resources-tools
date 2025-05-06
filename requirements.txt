@@ -1,7 +1,10 @@
-PyYAML
-colorlog
-coverage
+setuptools
+wheel
+dotenv
+custom-python-logger
+python-jira-plus
 mutmut
+coverage
 pytest
 pytest-cov
 pytz
