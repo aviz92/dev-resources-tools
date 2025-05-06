@@ -3,7 +3,6 @@ wheel
 dotenv
 custom-python-logger
 python-jira-plus
-mutmut
 coverage
 pytest
 pytest-cov
@@ -20,3 +19,6 @@ hvac
 psycopg2-binary
 boto3
 PyYAML
+elasticsearch-dsl==7.4.0
+elasticsearch==7.17.0
+pandas
