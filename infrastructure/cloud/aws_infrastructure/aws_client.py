@@ -1,8 +1,6 @@
 import logging
 from enum import Enum
-
 import boto3
-import box
 import yaml
 
 
@@ -39,9 +37,9 @@ class AWSClient:
             RoleSessionName=role_session_name
         )
 
-    def read_secret(self, secret_manager_client: boto3.client, secret_name: str) -> box.Box:
+    def read_secret(self, secret_manager_client: boto3.client, secret_name: str):
         secret = secret_manager_client.get_secret_value(SecretId=secret_name)
-        return box.Box(yaml.safe_load(secret['SecretString']))
+        return yaml.safe_load(secret['SecretString'])
 
     def get_bucket_content(self, s3_ins: boto3.client, bucket_name: str) -> boto3.client:
         return s3_ins.Bucket(bucket_name)
