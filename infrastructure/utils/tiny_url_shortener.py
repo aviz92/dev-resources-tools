@@ -20,3 +20,6 @@ class TinyURLShortener:
             raise requests.exceptions.RequestException(f"Request failed: {e}")
         except Exception as e:
             raise Exception(f"An error occurred: {e}")
+
+
+tiny_url = TinyURLShortener().shorten
