@@ -15,7 +15,7 @@ import zipfile
 logger = logging.getLogger(__name__)
 
 
-class Path:
+class FilePath:
     @staticmethod
     def ensure_dir(directory: str) -> str:
         if not os.path.exists(directory):
@@ -50,7 +50,7 @@ class Path:
         return result
 
 
-class IO:
+class FileIO:
     @staticmethod
     def safe_open(
         filename: str,
@@ -139,7 +139,7 @@ class FileSystem:
         return os.path.getsize(path)
 
 
-class Hash:
+class FileHash:
     @staticmethod
     def file_md5(filename: str, chunk_size: int = 8192) -> str:
         """Calculate MD5 hash of a file."""
@@ -168,7 +168,7 @@ class Hash:
         return hash_sha256.hexdigest()
 
 
-class Compression:
+class FileCompression:
     @staticmethod
     def gzip_file(input_path: str, output_path: Optional[str] = None) -> str:
         if not os.path.isfile(input_path):
@@ -230,7 +230,7 @@ class Compression:
             if output_dir.endswith('.tar'):
                 output_dir = output_dir[:-4]
 
-        Path.ensure_dir(output_dir)
+        FilePath.ensure_dir(output_dir)
 
         if archive_path.endswith(('.tar.gz', '.tgz')):
             with tarfile.open(archive_path, 'r:gz') as tar:
@@ -248,3 +248,39 @@ class Compression:
             raise ValueError(f"Unsupported archive format: {archive_path}")
 
         return output_dir
+
+
+file_path = FilePath()
+file_io = FileIO()
+file_system = FileSystem()
+file_hash = FileHash()
+file_compression = FileCompression()
+
+ensure_dir = file_path.ensure_dir
+file_exists = file_path.file_exists
+get_file_extension = file_path.get_file_extension
+get_filename = file_path.get_filename
+get_relative_path = file_path.get_relative_path
+list_files = file_path.list_files
+safe_open = file_io.safe_open
+read_text = file_io.read_text
+write_text = file_io.write_text
+read_json = file_io.read_json
+write_json = file_io.write_json
+read_yaml = file_io.read_yaml
+write_yaml = file_io.write_yaml
+read_csv = file_io.read_csv
+write_csv = file_io.write_csv
+is_binary_file = file_io.is_binary_file
+is_file_empty = file_io.is_file_empty
+copy_file = file_system.copy_file
+move_file = file_system.move_file
+delete_file = file_system.delete_file
+file_size = file_system.file_size
+file_md5 = file_hash.file_md5
+file_sha1 = file_hash.file_sha1
+file_sha256 = file_hash.file_sha256
+gzip_file = file_compression.gzip_file
+ungzip_file = file_compression.ungzip_file
+compress_directory = file_compression.compress_directory
+extract_archive = file_compression.extract_archive
