@@ -14,8 +14,7 @@ def timed_execution(
     pbar = tqdm(total=timeout, desc=pb_description, unit="s", ncols=100)
     start_time = time()
     while time() - start_time < timeout:
-        ret = func()
-        if (expect_true and ret) or (not expect_true and not ret):
+        if (expect_true and func()) or (not expect_true and not func()):
             pbar.close()
             return True
         pbar.update(interval)
