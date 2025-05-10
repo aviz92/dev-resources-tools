@@ -1,8 +1,16 @@
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
-import pytz
+utc_timezone = ZoneInfo('UTC')
 
 
-def get_date_and_time_with_timezone(timezone: pytz = pytz.UTC) -> datetime:
-    timestamp = datetime.now()
-    return timestamp.astimezone(timezone)
+def datetime_now_with_timezone(timezone: ZoneInfo = utc_timezone) -> datetime:
+    if not isinstance(timezone, ZoneInfo):
+        raise TypeError(f"Expected pytz timezone, got {type(timezone).__name__}")
+
+    now_utc = datetime.now(timezone)
+
+    if timezone.key == 'UTC':
+        return now_utc
+
+    return now_utc.astimezone(timezone)
