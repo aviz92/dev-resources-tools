@@ -120,6 +120,12 @@ class FileIO:
         return os.path.getsize(path) == 0
 
 
+class FfileManipulation:
+    @staticmethod
+    def remove_emojis(text: str) -> str:
+        return re.sub(r'[\U00010000-\U0010ffff]', '', text).strip()
+
+
 class FileSystem:
     @staticmethod
     def copy_file(src: str, dst: str) -> None:
