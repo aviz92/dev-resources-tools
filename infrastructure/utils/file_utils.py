@@ -8,6 +8,7 @@ import shutil
 import json
 import csv
 import yaml
+import re
 from typing import Optional, Union, BinaryIO, TextIO, cast, Any
 import tarfile
 import zipfile
