@@ -1,0 +1,32 @@
+// Search "@recommended" in Marketplace to see al the recommendation list
+{
+    "recommendations": [
+        // ### Python & Linting ###
+        "ms-python.python", // Python support
+        "ms-python.vscode-pylance", // Python language server
+        "charliermarsh.ruff", // Ruff linter
+        "ms-toolsai.jupyter", // Jupyter Notebook support
+        "ms-python.debugpy", // Python Debugger
+        // ### Git & GitHub ###
+        "eamodio.gitlens", // GitLens — Git supercharged
+        "github.vscode-github-actions", // GitHub Actions
+        "github.copilot", // GitHub Copilot
+        // ### Docker & Containers ###
+        "ms-vscode-remote.remote-containers", // Remote containers
+        "ms-azuretools.vscode-docker", // Docker extension
+        // ### Database###
+        "alexcvzz.vscode-sqlite", // SQLite
+        // ### HTTP & APIs ###
+        "postman.postman-for-vscode", // Postman
+        // ### TOML ###
+        "tamasfe.even-better-toml", // Even Better TOML
+        // ### Markdown ###
+        "bierner.markdown-mermaid", // Markdown Mermaid Support
+        "jebbs.markdown-extended", // Markdown Extended
+        "yzane.markdown-pdf", // Markdown PDF
+        // ### UI Enhancements ###
+        "johnpapa.vscode-peacock", // Peacock theme switcher
+        // ### Code Comments ###
+        "aaron-bond.better-comments" // Better Comments
+    ]
+}
