@@ -1,0 +1,22 @@
+// Place your key bindings in keybindings.json [ cmd+shift+p -> Preferences: Open Keyboard Shortcuts (JSON) ]
+[
+    {
+        "key": "cmd+i",
+        "command": "composerMode.agent"
+    },
+    {
+        "key": "cmd+d",
+        "command": "editor.action.duplicateSelection",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+backspace",
+        "command": "editor.action.deleteLines",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "cmd+shift+l",
+        "command": "editor.action.formatDocument",
+        "when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly"
+    }
+]
