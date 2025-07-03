@@ -1,0 +1,78 @@
+{
+    // ### General settings ###
+    "python.analysis.autoSearchPaths": true,
+    "redhat.telemetry.enabled": false, // Disables telemetry collection by Red Hat extensions (e.g., for YAML)
+    "window.commandCenter": true, // Enables Command Center in VS Code
+    "diffEditor.hideUnchangedRegions.enabled": true, // Hides unchanged regions in diff editor for clarity
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingImports": "none"
+    }, // Disable warnings/errors about missing imports
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ], // Add workspace root to Python import paths
+    "python.envFile": "${workspaceFolder}/.env", // Load environment variables from .env file in workspace root
+    "python.terminal.activateEnvironment": true, // Auto-activate the virtual environment in the integrated terminal
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python", // Use Python interpreter from local .venv folder
+    "files.exclude": { // Files/folders to hide in explorer
+        // ".vscode": false, // Show .vscode folder in Explorer
+        ".venv": false, // Show the .venv folder
+        "**/.idea": true, // Hide JetBrains IDE config folders
+        "**/.git": true, // Hide .git folder
+        "**/.github": true, // Hide .git folder
+        "**/.pytest_cache": true, // Hide pytest cache folder
+        "**/__pycache__": true // Hide Python bytecode cache folders
+    },
+    "extensions.autoUpdate": "onlyEnabledExtensions", // Auto-update only enabled extensions
+    // ### Git settings ###
+    "git.autofetch": true, // Automatically fetch updates from remote Git repo
+    // ### Python testing settings ###
+    "python.testing.pytestEnabled": true, // Enable pytest framework for testing
+    "python.testing.unittestEnabled": false, // Disable unittest framework
+    "python.testing.nosetestsEnabled": false, // Disable nose tests
+    "python.testing.pytestPath": "${workspaceFolder}/.venv/bin/pytest",
+    "python.testing.pytestArgs": [
+        "tests"
+    ], // Run pytest on the "tests" folder
+    "python.testing.autoTestDiscoverOnSaveEnabled": true, // Auto-discover tests on save
+    "python.testing.cwd": "${workspaceFolder}", // Set current working directory for tests to workspace root
+    "python.testing.promptToConfigure": false, // Don't prompt to configure testing on startup
+    "python.testing.codeLenses": true, // Show run/debug test code lenses above tests
+    "python.testing.autoTestDiscoverOnSaveTimeout": 1500, // Delay (ms) before auto test discovery after save
+    "python.testing.autoTestDiscoverOnSave": true, // Enable auto test discovery when saving files
+    // ### Explorer settings ###
+    "explorer.excludeGitIgnore": false, // Hide files ignored by .gitignore in explorer - will overwrite the files.exclude
+    // "explorer.autoReveal": true,                  // Automatically reveal file in explorer on open
+    // "explorer.confirmDelete": false,              // Disable confirmation on delete
+    // "explorer.confirmDragAndDrop": false,         // Disable confirmation on drag and drop
+    // Workbench settings
+    "workbench.colorTheme": "Default Dark+", // Set color theme to Default Dark+
+    "workbench.editor.enablePreview": false, // Disable preview mode for editors (always open new tab)
+    "workbench.editor.tabSizing": "shrink", // Shrink tabs to fit more open editors
+    // "workbench.settings.editor": "json",          // Open settings in JSON editor
+    // Editor settings
+    // "ruff.importStrategy": "useBundled",           // Set import strategy for ruff formatter
+    // "editor.defaultFormatter": "charliermarsh.ruff", // Set default formatter to ruff
+    "editor.formatOnPaste": true, // Auto format pasted code
+    "editor.formatOnSave": true, // Auto format on file save
+    "editor.formatOnSaveMode": "file", // Format entire file on save
+    "editor.codeActionsOnSave": { // Run code actions on save
+        "source.organizeImports": "always", // Always organize imports on save
+        "source.fixAll": "always" // Always fix all fixable issues on save
+    },
+    "files.autoSave": "onFocusChange", // Auto-save file when focus leaves editor
+    "[json]": { // JSON files editor config
+        "editor.defaultFormatter": "vscode.json-language-features" // Use built-in JSON formatter
+    },
+    "[jsonc]": { // JSONC files editor config
+        "editor.defaultFormatter": "vscode.json-language-features" // Use built-in JSON formatter
+    },
+    // ### Debug settings ###
+    "debug.toolBarLocation": "docked", // Dock debug toolbar to top of editor
+    // ### Terminal settings ###
+    "terminal.integrated.tabs.enabled": true, // Enable tabs in integrated terminal
+    "terminal.integrated.tabs.hideCondition": "never", // Never hide terminal tabs
+    "terminal.integrated.tabs.location": "right", // Position terminal tabs on the right side
+    // ### Markdown settings ###
+    "markdown.preview.scrollEditorWithPreview": true, // Scroll editor along with markdown preview
+    "markdown.preview.scrollPreviewWithEditor": true // Scroll markdown preview along with editor
+}
